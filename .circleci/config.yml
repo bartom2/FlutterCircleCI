@@ -4,8 +4,10 @@ jobs:
   test:
     docker:
       - image: ghcr.io/cirruslabs/flutter:stable
+    working_directory: ~/project/fluttercircleci
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run:
           name: Instalar dependencias
           command: flutter pub get
