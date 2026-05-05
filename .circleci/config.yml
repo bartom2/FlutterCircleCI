@@ -1,0 +1,22 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: ghcr.io/cirruslabs/flutter:stable
+    steps:
+      - checkout
+      - run:
+          name: Instalar dependencias
+          command: flutter pub get
+      - run:
+          name: Análisis de código
+          command: flutter analyze
+      - run:
+          name: Correr tests
+          command: flutter test
+
+workflows:
+  pipeline:
+    jobs:
+      - test
